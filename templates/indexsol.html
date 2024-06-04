@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>crypto webscraper</title>
+</head>
+<body>
+    <div class="container">
+		<div class="column">
+			cryptocom
+			<ol>
+				{% for k,v in cryptocom.items() %}
+					<li>{{ k }} - {{ v }}</li>
+				{% endfor %}
+			</ol>
+		</div>
+        <div class="column">
+			gemini
+			<ol>
+				{% for k,v in gemini.items() %}
+					<li>{{ k }} - {{ v }}</li>
+				{% endfor %}
+			</ol>
+		</div>
+		<div class="column">
+			history of crypto com ranking
+				{% for c in cc1 %}
+					{% for a,b in c.items() %}
+						<button type="button" class="collapsible">{{a}}</button>
+						<div class="content">
+						<ol>
+						{% for crypto_name, price in b.items() %}
+							<li>{{crypto_name}} - {{price}}</li>
+						{% endfor %}
+						</ol>
+						</div>
+						
+					{% endfor %}
+					
+				{% endfor %}
+		</div>
+		<div class="column">
+			history of gemini ranking
+				{% for c in cg1 %}
+					{% for a,b in c.items() %}
+						<button type="button" class="collapsible">{{a}}</button>
+						<div class="content">
+						<ol>
+						{% for crypto_name, price in b.items() %}
+							<li>{{crypto_name}} - {{price}}</li>
+						{% endfor %}
+						</ol>
+						</div>
+						
+					{% endfor %}
+					
+				{% endfor %}
+		</div>
+    </div>
+	<script>
+var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.display === "block") {
+      content.style.display = "none";
+    } else {
+      content.style.display = "block";
+    }
+  });
+}
+</script>
+</body>
+</html>

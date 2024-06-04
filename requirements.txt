@@ -1,0 +1,5 @@
+flask
+redis
+BeautifulSoup4
+requests
+httpx
